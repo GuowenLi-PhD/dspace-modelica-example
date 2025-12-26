@@ -4,3 +4,13 @@ PartialPhysicalAirside
 PartialAirside
 EnergyMeter
 RunTime
+PartialAirsideFiveZonesWeather
+PartialPhysicalAirsideFiveZonesWeather
+PartialAirsideFiveZones
+PartialPhysicalAirsideFiveZones_v1
+PartialAirsideFiveZonesAHU_v1
+PartialPhysicalAirsideFiveZonesAHU
+PartialAirsideFault
+PartialAirsideFiveZonesAHU
+PartialPhysicalAirsideFiveZones
+Chiller

@@ -92,7 +92,7 @@ model TwoZoneVAVUnitConverted
     v_max=5) "0C-50C mapping to 0 - 5V"
     annotation (Placement(transformation(extent={{130,194},{150,214}})));
   UnitConversion.KToF kToF1
-    annotation (Placement(transformation(extent={{100,134},{120,154}})));
+    annotation (Placement(transformation(extent={{96,134},{116,154}})));
   UnitConversion.ToAnolog toV2(
     x_min=25,
     x_max=125,
@@ -298,10 +298,11 @@ equation
     annotation (Line(points={{121,204},{128,204}}, color={0,0,127}));
   connect(toV1.v, TDis2_V) annotation (Line(points={{151,204},{174,204},{174,
           -50},{190,-50}}, color={0,0,127}));
-  connect(zon2.TRooAir, kToF1.K) annotation (Line(points={{157,84},{156,84},{156,
-          120},{86,120},{86,144},{98,144}}, color={0,0,127}));
+  connect(zon2.TRooAir, kToF1.K) annotation (Line(points={{157,84},{156,84},{
+          156,120},{86,120},{86,144},{94,144}},
+                                            color={0,0,127}));
   connect(kToF1.F, toV2.x)
-    annotation (Line(points={{121,144},{128,144}}, color={0,0,127}));
+    annotation (Line(points={{117,144},{128,144}}, color={0,0,127}));
   connect(toV2.v, TRooAir2_V) annotation (Line(points={{151,144},{166,144},{166,
           -90},{190,-90}}, color={0,0,127}));
   connect(kToF_TOut.F, toV_TOut.x) annotation (Line(points={{111,270},{120.5,
@@ -336,7 +337,7 @@ equation
           {14,226},{14,-140},{202,-140}}, color={0,0,127}));
   connect(vToCFM_vav2.CFM, V2_flow) annotation (Line(points={{121,174},{124,174},
           {124,190},{26,190},{26,-164},{202,-164}}, color={0,0,127}));
-  connect(kToF1.F, TRooAir2) annotation (Line(points={{121,144},{124,144},{124,
+  connect(kToF1.F, TRooAir2) annotation (Line(points={{117,144},{124,144},{124,
           160},{26,160},{26,-196},{202,-196}}, color={0,0,127}));
   connect(modTim.y, t) annotation (Line(points={{151,300},{162,300},{162,170},{
           190,170}}, color={0,0,127}));
@@ -434,7 +435,7 @@ equation
       __Dymola_fixedstepsize=0.1,
       __Dymola_Algorithm="Euler"),
     __Dymola_experimentFlags(Advanced(
-        InlineMethod=0,
+        InlineMethod=1,
         InlineOrder=2,
-        InlineFixedStep=0.001)));
+        InlineFixedStep=0.1)));
 end TwoZoneVAVUnitConverted;

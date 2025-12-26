@@ -25,7 +25,7 @@ partial model PartialWaterside
     "Nominal pressure";
   parameter Modelica.SIunits.PressureDifference dp2_wse_nominal = 34.5*1000
     "Nominal pressure";
-  parameter Real COP_nominal=5.9 "COP";
+  parameter Real COP_nominal=3.5 "COP";
   parameter FaultInjection.Experimental.SystemLevelFaults.Data.Chiller[numChi] perChi(
     each QEva_flow_nominal=QEva_nominal,
     each COP_nominal=COP_nominal,
@@ -182,8 +182,8 @@ partial model PartialWaterside
     annotation (Placement(transformation(extent={{1196,-254},{1216,-234}})));
   Modelica.Blocks.Math.Gain dpSetGai(k=1/dpSetPoi) "Gain effect"
     annotation (Placement(transformation(extent={{1256,-258},{1276,-238}})));
-  FaultInjection.Utilities.InsertionTypes.Variables.SignalDelay.RealFixedDelay CHWSTDelAtt(faultMode
-      =faultCHWTSet, delayTime=1800) "CHWST delay attack"
+  FaultInjection.Utilities.InsertionTypes.Variables.SignalDelay.RealFixedDelay CHWSTDelAtt(faultMode=
+       faultCHWTSet, delayTime=1800) "CHWST delay attack"
     annotation (Placement(transformation(extent={{1218,-310},{1198,-290}})));
   parameter FaultInjection.Utilities.InsertionTypes.Generic.faultMode faultCHWTSet(
     endTime=207*24*3600 + 12*3600 + 6*3600,
@@ -191,8 +191,8 @@ partial model PartialWaterside
     minimum=273.15 + 4,
     maximum=273.15 + 15) "Delaying chilled water temperature setpoint"
     annotation (Placement(transformation(extent={{1198,-330},{1218,-310}})));
-  FaultInjection.Utilities.InsertionTypes.Variables.SignalCorruption.External chiOnAtt(faultMode
-      =faultChiOn)
+  FaultInjection.Utilities.InsertionTypes.Variables.SignalCorruption.External chiOnAtt(faultMode=
+       faultChiOn)
     annotation (Placement(transformation(extent={{1350,-120},{1370,-100}})));
   Buildings.Controls.OBC.CDL.Continuous.Sources.Pulse oveChiOn(period=3600,
       startTime=207*24*3600 + 12*3600)

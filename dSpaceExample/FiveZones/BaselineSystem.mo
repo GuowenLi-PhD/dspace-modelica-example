@@ -165,6 +165,14 @@ model BaselineSystem "System example for fault injection"
   Modelica.Blocks.Math.BooleanToReal booToReaCT
     annotation (Placement(transformation(extent={{1254,688},{1274,708}})));
 
+  Buildings.Fluid.Sensors.RelativePressure senDifPreFan(redeclare package
+      Medium = MediumA) "Sensor for supply fan  static pressure"
+    annotation (Placement(transformation(extent={{282,74},{262,94}})));
+  Modelica.Blocks.Math.BooleanToReal booToRea1
+    annotation (Placement(transformation(extent={{-306,-8},{-286,12}})));
+  Modelica.Blocks.Interfaces.RealOutput booOcc "occupied status" annotation (
+      Placement(transformation(extent={{-278,-8},{-258,12}}),
+        iconTransformation(extent={{350,-140},{370,-120}})));
 equation
 
   connect(chiWSE.TCHWSupWSE,cooModCon. TCHWSupWSE)
@@ -412,12 +420,23 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(senDifPreFan.port_a, fanSup.port_b) annotation (Line(points={{282,84},
+          {302,84},{302,-40},{320,-40}}, color={0,127,255}));
+  connect(senDifPreFan.port_b, fanSup.port_a) annotation (Line(points={{262,84},
+          {282,84},{282,-40},{300,-40}}, color={0,127,255}));
+  connect(booToRea1.y, booOcc)
+    annotation (Line(points={{-285,2},{-268,2}}, color={0,0,127}));
+  connect(occSch.occupied, booToRea1.u) annotation (Line(points={{-297,-76},{
+          -294,-76},{-294,-14},{-308,-14},{-308,2}}, color={255,0,255}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-400,-400},{1440,
             750}})),
     experiment(
-      StopTime=3600,
-      Tolerance=1e-06,
+      StopTime=86400,
       __Dymola_fixedstepsize=0.1,
-      __Dymola_Algorithm="Euler"));
+      __Dymola_Algorithm="Euler"),
+    __Dymola_experimentFlags(Advanced(
+        InlineMethod=0,
+        InlineOrder=2,
+        InlineFixedStep=0.1)));
 end BaselineSystem;

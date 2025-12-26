@@ -110,9 +110,6 @@ partial model PartialAirside
     each minimum=273.15 + 15,
     each maximum=273.15 + 28) "Zone temperature sensor attack"
     annotation (Placement(transformation(extent={{1080,512},{1100,532}})));
-  FaultInjection.Utilities.InsertionTypes.Variables.SignalBlock.Blocking fanSpeConAtt(faultMode
-      =faultFanSpeed) "Block the fan speed signal"
-    annotation (Placement(transformation(extent={{520,578},{540,598}})));
   parameter FaultInjection.Utilities.InsertionTypes.Generic.faultMode faultFanSpeed(
     startTime=207*24*3600 + 12*3600,
     endTime=207*24*3600 + 12*3600 + 3*3600,
@@ -424,10 +421,6 @@ equation
           1106.07,491.333},{1106.07,510},{1119.8,510}}, color={0,0,127}));
   connect(maxAtt.y, zonOutAirSet.TZon) annotation (Line(points={{1145.1,510},{
           1178,510},{1178,660},{208,660},{208,590},{218,590}}, color={235,0,0}));
-  connect(fanSpeConAtt.u, conAHU.ySupFanSpe) annotation (Line(points={{518,588},
-          {500,588},{500,618.667},{424,618.667}}, color={235,0,0}));
-  connect(fanSpeConAtt.y, fanSup.y) annotation (Line(points={{541,588},{550,588},
-          {550,456},{434,456},{434,-16},{310,-16},{310,-28}}, color={235,0,0}));
   connect(maxAtt.y, TZonSet.TZon) annotation (Line(points={{1145.1,510},{1178,
           510},{1178,660},{42,660},{42,313},{58,313}}, color={235,0,0}));
   connect(TZonResReq.y, extAtt.u) annotation (Line(points={{322,370},{328,370},
@@ -437,6 +430,8 @@ equation
           46,47}));
   connect(attReq.y, extAtt.uFau)
     annotation (Line(points={{322,416},{338,416}}, color={255,127,0}));
+  connect(conAHU.ySupFanSpe, fanSup.y) annotation (Line(points={{424,618.667},{
+          508,618.667},{508,278},{310,278},{310,-28}}, color={0,0,127}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-380,-320},{1400,
             680}})),
