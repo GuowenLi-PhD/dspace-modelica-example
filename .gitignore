@@ -106,3 +106,4 @@ fmiModelIdentifier.h'
 /FiveZoneDemoControlDesk
 /fmus
 /simulink
+*.bak

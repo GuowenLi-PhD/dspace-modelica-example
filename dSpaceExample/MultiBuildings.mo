@@ -3227,17 +3227,100 @@ package MultiBuildings "Models for multi-building HIL experiments"
       v_max=5)  "25/125F mapping to 0-10v"
       annotation (Placement(transformation(extent={{750,-486},{770,-466}})));
     Modelica.Blocks.Sources.RealExpression TtesRooAirSou(y=bldg2TES.conVAVSou.TZon)
-      annotation (Placement(transformation(extent={{678,-486},{698,-466}})));
+      annotation (Placement(transformation(extent={{640,-486},{698,-466}})));
     Modelica.Blocks.Math.RealToInteger uModtoInt
       "-1: Charge TES; 0: off; 1: Discharge TES; 2: Discharge chiller"
-      annotation (Placement(transformation(extent={{278,-496},{298,-476}})));
+      annotation (Placement(transformation(extent={{300,-500},{320,-480}})));
     Modelica.Blocks.Interfaces.RealOutput TtesRooAirSou_V
       "Room air temperature" annotation (Placement(transformation(extent={{792,
               -486},{812,-466}}), iconTransformation(extent={{260,20},{280,40}})));
     Modelica.Blocks.Interfaces.RealInput yBldg2TES_uMod
       "-1: Charge TES; 0: off; 1: Discharge TES; 2: Discharge chiller"
-      annotation (Placement(transformation(extent={{216,-496},{236,-476}}),
+      annotation (Placement(transformation(extent={{216,-500},{236,-480}}),
           iconTransformation(extent={{-220,-260},{-200,-240}})));
+    UnitConversion.KToF kToF23
+      annotation (Placement(transformation(extent={{718,-526},{738,-506}})));
+    UnitConversion.ToAnolog toV47(
+      x_min=25,
+      x_max=125,
+      v_min=0,
+      v_max=5)  "25/125F mapping to 0-10v"
+      annotation (Placement(transformation(extent={{750,-526},{770,-506}})));
+    Modelica.Blocks.Sources.RealExpression TtesRooAirEas(y=bldg2TES.conVAVEas.TZon)
+      annotation (Placement(transformation(extent={{640,-526},{698,-506}})));
+    Modelica.Blocks.Interfaces.RealOutput TtesRooAirEas_V
+      "Room air temperature" annotation (Placement(transformation(extent={{792,
+              -526},{812,-506}}), iconTransformation(extent={{260,20},{280,40}})));
+    UnitConversion.KToF kToF24
+      annotation (Placement(transformation(extent={{718,-566},{738,-546}})));
+    UnitConversion.ToAnolog toV48(
+      x_min=25,
+      x_max=125,
+      v_min=0,
+      v_max=5)  "25/125F mapping to 0-10v"
+      annotation (Placement(transformation(extent={{750,-566},{770,-546}})));
+    Modelica.Blocks.Sources.RealExpression TtesRooAirNor(y=bldg2TES.conVAVNor.TZon)
+      annotation (Placement(transformation(extent={{640,-566},{698,-546}})));
+    UnitConversion.KToF kToF25
+      annotation (Placement(transformation(extent={{718,-606},{738,-586}})));
+    UnitConversion.ToAnolog toV49(
+      x_min=25,
+      x_max=125,
+      v_min=0,
+      v_max=5)  "25/125F mapping to 0-10v"
+      annotation (Placement(transformation(extent={{750,-606},{770,-586}})));
+    Modelica.Blocks.Sources.RealExpression TtesRooAirWes(y=bldg2TES.conVAVWes.TZon)
+      annotation (Placement(transformation(extent={{640,-606},{698,-586}})));
+    Modelica.Blocks.Interfaces.RealOutput TtesRooAirNor_V
+      "Room air temperature" annotation (Placement(transformation(extent={{792,
+              -566},{812,-546}}), iconTransformation(extent={{260,20},{280,40}})));
+    Modelica.Blocks.Interfaces.RealOutput TtesRooAirWes_V
+      "Room air temperature" annotation (Placement(transformation(extent={{792,
+              -606},{812,-586}}), iconTransformation(extent={{260,20},{280,40}})));
+    UnitConversion.KToF kToF26
+      annotation (Placement(transformation(extent={{718,-446},{738,-426}})));
+    UnitConversion.ToAnolog toV50(
+      x_min=25,
+      x_max=125,
+      v_min=0,
+      v_max=5)  "25/125F mapping to 0-10v"
+      annotation (Placement(transformation(extent={{750,-446},{770,-426}})));
+    Modelica.Blocks.Sources.RealExpression TtesRooAirCor(y=bldg2TES.conVAVCor.TZon)
+      annotation (Placement(transformation(extent={{640,-446},{698,-426}})));
+    Modelica.Blocks.Interfaces.RealOutput TtesRooAirCor_V
+      "Room air temperature" annotation (Placement(transformation(extent={{792,
+              -446},{812,-426}}), iconTransformation(extent={{260,20},{280,40}})));
+    UnitConversion.ToAnolog toV51(
+      x_min=0,
+      x_max=1,
+      v_min=0,
+      v_max=5)  "25/125F mapping to 0-10v"
+      annotation (Placement(transformation(extent={{750,-654},{770,-634}})));
+    Modelica.Blocks.Sources.RealExpression iceTanSOC(y=bldg2TES.iceTan.SOC)
+      annotation (Placement(transformation(extent={{640,-654},{698,-634}})));
+    Modelica.Blocks.Interfaces.RealOutput iceTanSOC_V "state-of-charge"
+      annotation (Placement(transformation(extent={{792,-654},{812,-634}}),
+          iconTransformation(extent={{260,20},{280,40}})));
+    UnitConversion.ToAnolog toV52(
+      x_min=0,
+      x_max=50000,
+      v_min=0,
+      v_max=5)  "25/125F mapping to 0-10v"
+      annotation (Placement(transformation(extent={{750,-694},{770,-674}})));
+    Modelica.Blocks.Sources.RealExpression Ptot_bldg2(y=bldg2TES.chi.P +
+          bldg2TES.priPum.P + bldg2TES.secPum.P + bldg2TES.fanSup.P)
+      annotation (Placement(transformation(extent={{640,-694},{698,-674}})));
+    Modelica.Blocks.Interfaces.RealOutput Ptot_bldg2_V
+      "Second building's total power consumption" annotation (Placement(
+          transformation(extent={{792,-694},{812,-674}}), iconTransformation(
+            extent={{260,20},{280,40}})));
+    UnitConversion.FromAnalog volToMode(
+      v_min=0,
+      v_max=10,
+      y_min=-1,
+      y_max=2)
+      "0 - 10 V to (-1: Charge TES; 0: off; 1: Discharge TES; 2: Discharge chiller)"
+      annotation (Placement(transformation(extent={{260,-500},{280,-480}})));
   equation
 
     connect(chiWSE.TCHWSupWSE,cooModCon. TCHWSupWSE)
@@ -3973,11 +4056,46 @@ package MultiBuildings "Models for multi-building HIL experiments"
     connect(toV46.v, TtesRooAirSou_V)
       annotation (Line(points={{771,-476},{802,-476}}, color={0,0,127}));
     connect(TtesRooAirSou.y, kToF22.K)
-      annotation (Line(points={{699,-476},{716,-476}}, color={0,0,127}));
-    connect(uModtoInt.y, bldg2TES.uMod) annotation (Line(points={{299,-486},{
-            334,-486},{334,-485.8},{386.2,-485.8}}, color={255,127,0}));
-    connect(uModtoInt.u, yBldg2TES_uMod)
-      annotation (Line(points={{276,-486},{226,-486}}, color={0,0,127}));
+      annotation (Line(points={{700.9,-476},{716,-476}},
+                                                       color={0,0,127}));
+    connect(uModtoInt.y, bldg2TES.uMod) annotation (Line(points={{321,-490},{
+            334,-490},{334,-485.8},{386.2,-485.8}}, color={255,127,0}));
+    connect(kToF23.F,toV47. x)
+      annotation (Line(points={{739,-516},{748,-516}}, color={0,0,127}));
+    connect(toV47.v, TtesRooAirEas_V)
+      annotation (Line(points={{771,-516},{802,-516}}, color={0,0,127}));
+    connect(TtesRooAirEas.y, kToF23.K)
+      annotation (Line(points={{700.9,-516},{716,-516}}, color={0,0,127}));
+    connect(kToF24.F,toV48. x)
+      annotation (Line(points={{739,-556},{748,-556}}, color={0,0,127}));
+    connect(toV48.v, TtesRooAirNor_V)
+      annotation (Line(points={{771,-556},{802,-556}}, color={0,0,127}));
+    connect(TtesRooAirNor.y, kToF24.K)
+      annotation (Line(points={{700.9,-556},{716,-556}}, color={0,0,127}));
+    connect(kToF25.F,toV49. x)
+      annotation (Line(points={{739,-596},{748,-596}}, color={0,0,127}));
+    connect(toV49.v, TtesRooAirWes_V)
+      annotation (Line(points={{771,-596},{802,-596}}, color={0,0,127}));
+    connect(TtesRooAirWes.y, kToF25.K)
+      annotation (Line(points={{700.9,-596},{716,-596}}, color={0,0,127}));
+    connect(kToF26.F,toV50. x)
+      annotation (Line(points={{739,-436},{748,-436}}, color={0,0,127}));
+    connect(toV50.v, TtesRooAirCor_V)
+      annotation (Line(points={{771,-436},{802,-436}}, color={0,0,127}));
+    connect(TtesRooAirCor.y, kToF26.K)
+      annotation (Line(points={{700.9,-436},{716,-436}}, color={0,0,127}));
+    connect(toV51.v, iceTanSOC_V)
+      annotation (Line(points={{771,-644},{802,-644}}, color={0,0,127}));
+    connect(iceTanSOC.y, toV51.x)
+      annotation (Line(points={{700.9,-644},{748,-644}}, color={0,0,127}));
+    connect(toV52.v, Ptot_bldg2_V)
+      annotation (Line(points={{771,-684},{802,-684}}, color={0,0,127}));
+    connect(Ptot_bldg2.y, toV52.x)
+      annotation (Line(points={{700.9,-684},{748,-684}}, color={0,0,127}));
+    connect(yBldg2TES_uMod, volToMode.v)
+      annotation (Line(points={{226,-490},{258,-490}}, color={0,0,127}));
+    connect(volToMode.y, uModtoInt.u)
+      annotation (Line(points={{281,-490},{298,-490}}, color={0,0,127}));
     annotation (
       Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-400,-400},{1440,
               750}})),
