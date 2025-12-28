@@ -4102,12 +4102,12 @@ package MultiBuildings "Models for multi-building HIL experiments"
       experiment(
         StopTime=604800,
         Interval=3600,
-        __Dymola_fixedstepsize=0.01,
+        __Dymola_fixedstepsize=0.1,
         __Dymola_Algorithm="Euler"),
       __Dymola_experimentFlags(Advanced(
           InlineMethod=2,
           InlineOrder=2,
-          InlineFixedStep=0.01)),
+          InlineFixedStep=0.1)),
       Icon(graphics={Text(
             extent={{246,80},{286,22}},
             lineColor={28,108,200},
